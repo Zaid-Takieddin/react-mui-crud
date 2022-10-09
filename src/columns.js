@@ -1,7 +1,6 @@
 import { Box, Button } from "@mui/material";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "./context/auth-context";
 import { useDeletePerson } from "./hooks/usePersons";
 
 export const COLUMNS = [
@@ -29,8 +28,6 @@ export const COLUMNS = [
     Cell: ({ row }) => {
       const { mutate: deletePerson } = useDeletePerson();
       const navigate = useNavigate();
-      // const { data } = useAuth();
-      // console.log(data?.data?.accessToken);
       return (
         <Box sx={{ display: "flex", gap: "10px" }}>
           <Button

@@ -1,17 +1,26 @@
-import axios from "axios";
-import { useMutation, useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { useMutation } from "react-query";
+import { request } from "../utils/axios-utils";
 
 const addUser = (user) => {
-  return axios.post("http://localhost:4000/register", user);
+  return request({
+    url: "/register",
+    method: "post",
+    data: user,
+  });
+};
+
+const getUser = (user) => {
+  return request({
+    url: "/login",
+    method: "post",
+    data: user,
+  });
 };
 
 export const useRegister = () => {
-  // const navigate = useNavigate();
+  return useMutation(addUser);
+};
 
-  return useMutation(addUser, {
-    onSuccess: () => {
-      // navigate("/");
-    },
-  });
+export const useLogin = () => {
+  return useMutation(getUser);
 };

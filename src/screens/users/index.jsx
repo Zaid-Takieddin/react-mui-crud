@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import { usePersons } from "../../hooks/usePersons";
 import { COLUMNS } from "../../columns";
-import Table from "../../components/Table";
 import PersonsTable from "../../components/Table";
 
 const Users = () => {

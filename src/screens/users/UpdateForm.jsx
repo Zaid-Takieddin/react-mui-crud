@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material";
-import { format } from "date-fns";
+import { format, formatISO, parseISO } from "date-fns";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
@@ -12,12 +12,7 @@ const UpdateForm = () => {
   const navigate = useNavigate();
   const { mutate: updatePerson } = useUpdatePerson();
 
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { isDirty },
-  } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       first_name: data?.data?.first_name,
       last_name: data?.data?.last_name,
@@ -27,11 +22,12 @@ const UpdateForm = () => {
   });
 
   const submit = (data) => {
-    console.log({
-      id: personId,
+    const person = {
       ...data,
-    });
-    updatePerson(data);
+      id: personId,
+      date_of_birth: formatISO(parseISO(data.date_of_birth)),
+    };
+    updatePerson(person);
   };
 
   if (isLoading) {

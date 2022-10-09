@@ -1,24 +1,18 @@
-import { Box, Button, Typography } from "@mui/material";
-import { format } from "date-fns";
+import { Box, Button } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import InputField from "../../components/InputField";
 import { useAddPerson } from "../../hooks/usePersons";
-import { schema } from "../../yup-resolver";
+import { personsSchema } from "../../yup-resolver";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const AddForm = () => {
   const navigate = useNavigate();
   const { mutate: addPerson } = useAddPerson();
 
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-    defaultValues: "",
+  const { handleSubmit, control } = useForm({
+    resolver: yupResolver(personsSchema),
   });
 
   const submit = (data) => {

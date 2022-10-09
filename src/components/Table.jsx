@@ -2,10 +2,7 @@ import {
   Box,
   TableBody,
   TableCell,
-  TableContainer,
-  TableFooter,
   TableHead,
-  TablePagination,
   TableRow,
   Table,
   Button,
@@ -14,11 +11,9 @@ import {
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { usePagination, useTable } from "react-table";
-import { useAuth } from "../context/auth-context";
 
 const PersonsTable = ({ columns, tableData }) => {
   const navigate = useNavigate();
-  const { data } = useAuth();
   const {
     getTableProps,
     getTableBodyProps,
@@ -38,12 +33,6 @@ const PersonsTable = ({ columns, tableData }) => {
     },
     usePagination
   );
-
-  // const { mutate: deleteUser } = useDeleteUser();
-
-  // const handleDelete = (row) => {
-  //   deleteUser(row.original.id);
-  // };
 
   return (
     <Box
