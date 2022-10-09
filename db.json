@@ -229,6 +229,16 @@
       "email": "ghj@gh.com",
       "password": "$2a$10$f1LvBQkjuxd91y4Djir0qe2C13ymys3d7ANgvgFkgZTYz3/2Ho972",
       "id": 46
+    },
+    {
+      "email": "regr@fgre.com",
+      "password": "$2a$10$Lr.dxH9hAfLpBHK0dsR68u2/YjEP5c7Psrd0gkT0pkDQVmxN7nl72",
+      "id": 47
+    },
+    {
+      "email": "few@fgew.com",
+      "password": "$2a$10$cd9VGv4Kt4ostYCB2cQifeIKopFoSWN7poTnSZA/NrfKzEMIBI7me",
+      "id": 48
     }
   ],
   "persons": [
@@ -889,13 +899,6 @@
       "last_name": "Greeve",
       "date_of_birth": "1979-02-26T21:14:46Z",
       "country": "Syria"
-    },
-    {
-      "id": 150,
-      "first_name": "Gus",
-      "last_name": "Mylan",
-      "date_of_birth": "1987-01-01T02:19:51Z",
-      "country": "Luxembourg"
     },
     {
       "id": 151,

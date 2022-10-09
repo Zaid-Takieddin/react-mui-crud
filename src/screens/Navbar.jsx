@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 
 const Navbar = () => {
@@ -9,7 +9,10 @@ const Navbar = () => {
         alignItems: "center",
         justifyContent: "space-between",
       }}
-    ></Box>
+    >
+      <Typography></Typography>
+      <Box></Box>
+    </Box>
   );
 };
 

@@ -9,17 +9,18 @@ const InputField = ({ name, control, label, type, sx }) => {
   } = useController({
     name,
     control,
+    defaultValue: "",
   });
 
   return (
     <>
       <TextField
         error={!!error}
-        onChange={onChange}
-        onBlur={onBlur}
-        value={value}
-        name={fieldName}
-        inputRef={ref}
+        onChange={onChange} // send value to hook form
+        onBlur={onBlur} // notify when input is touched/blur
+        value={value} // input value
+        name={fieldName} // send down the input name
+        inputRef={ref} // send input ref, so we can focus on input when error appear
         label={label}
         type={type || "text"}
         sx={{
