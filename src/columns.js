@@ -29,7 +29,14 @@ export const COLUMNS = [
       const { mutate: deletePerson } = useDeletePerson();
       const navigate = useNavigate();
       return (
-        <Box sx={{ display: "flex", gap: "10px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: "10px",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <Button
             variant="contained"
             color="error"

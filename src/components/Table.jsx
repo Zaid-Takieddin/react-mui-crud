@@ -42,32 +42,16 @@ const PersonsTable = ({ columns, tableData }) => {
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        height: "100vh",
-        margin: "0 auto",
+        gap: "10px",
       }}
     >
-      <Box
-        sx={{ padding: "30px 0 0 0", alignSelf: "flex-end", margin: "0 400px" }}
-      >
-        <Button
-          sx={{ justifyItems: "flex-end" }}
-          onClick={() => {
-            navigate("/persons/add");
-          }}
-          variant="contained"
-        >
-          Add User
-        </Button>
-      </Box>
       <Table
         {...getTableProps()}
         sx={{
-          display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          width: "100%",
-          height: "100%",
+          width: "60%",
         }}
         size="small"
       >
@@ -82,6 +66,7 @@ const PersonsTable = ({ columns, tableData }) => {
                     fontWeight: "700",
                     borderBottom: "none",
                     width: "100px",
+                    textAlign: "center",
                   }}
                   variant="head"
                 >

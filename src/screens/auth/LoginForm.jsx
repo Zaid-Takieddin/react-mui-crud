@@ -17,7 +17,6 @@ const LoginForm = () => {
   const user = useAuth();
 
   const submit = (data) => {
-    console.log(data);
     user.login(data);
     navigate("/");
   };

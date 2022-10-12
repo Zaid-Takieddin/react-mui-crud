@@ -18,9 +18,17 @@ const getUser = (user) => {
 };
 
 export const useRegister = () => {
-  return useMutation(addUser);
+  return useMutation(addUser, {
+    onSuccess: (data) => {
+      localStorage.setItem("userToken", data.data.accessToken);
+    },
+  });
 };
 
 export const useLogin = () => {
-  return useMutation(getUser);
+  return useMutation(getUser, {
+    onSuccess: (data) => {
+      localStorage.setItem("userToken", data.data.accessToken);
+    },
+  });
 };

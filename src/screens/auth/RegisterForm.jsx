@@ -17,9 +17,7 @@ const RegisterForm = () => {
   const user = useAuth();
 
   const submit = (data) => {
-    console.log(data);
     user.register(data);
-    navigate("/");
   };
   return (
     <Box

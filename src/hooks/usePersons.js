@@ -1,6 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/auth-context";
 import { request } from "../utils/axios-utils";
 
 const fetchPersons = () => {
@@ -18,34 +17,34 @@ const fetchPerson = ({ queryKey }) => {
   });
 };
 
-const deletePerson = (id, accessToken) => {
+const deletePerson = (id) => {
   return request({
     url: `/664/persons/${id}`,
     method: "delete",
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${localStorage.getItem("userToken")}`,
     },
   });
 };
 
-const addPerson = (person, accessToken) => {
+const addPerson = (person) => {
   return request({
     url: "/664/persons",
     method: "post",
     data: person,
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${localStorage.getItem("userToken")}`,
     },
   });
 };
 
-const updatePerson = (person, accessToken) => {
+const updatePerson = (person) => {
   return request({
     url: `/664/persons/${person.id}`,
     method: "put",
     data: person,
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${localStorage.getItem("userToken")}`,
     },
   });
 };
@@ -73,9 +72,7 @@ export const usePerson = (personId) => {
 
 export const useAddPerson = () => {
   const navigate = useNavigate();
-  const { data } = useAuth();
-  const accessToken = data?.data?.accessToken;
-  return useMutation((person) => addPerson(person, accessToken), {
+  return useMutation(addPerson, {
     onSuccess: () => {
       navigate("/");
     },
@@ -83,10 +80,8 @@ export const useAddPerson = () => {
 };
 
 export const useDeletePerson = () => {
-  const { data } = useAuth();
-  const accessToken = data?.data?.accessToken;
   const queryClient = useQueryClient();
-  return useMutation((id) => deletePerson(id, accessToken), {
+  return useMutation(deletePerson, {
     onSuccess: () => {
       queryClient.invalidateQueries("persons");
     },
@@ -95,10 +90,8 @@ export const useDeletePerson = () => {
 
 export const useUpdatePerson = () => {
   const navigate = useNavigate();
-  const { data } = useAuth();
-  const accessToken = data?.data?.accessToken;
   const queryClient = useQueryClient();
-  return useMutation((person) => updatePerson(person, accessToken), {
+  return useMutation(updatePerson, {
     onSuccess: () => {
       queryClient.invalidateQueries("persons");
       navigate("/");

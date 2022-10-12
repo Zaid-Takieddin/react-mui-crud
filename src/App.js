@@ -10,18 +10,17 @@ import LoginForm from "./screens/auth/LoginForm";
 
 function App() {
   const user = useAuth();
-  console.log(user);
   return (
     <BrowserRouter>
       <Routes>
-        {user.data && (
+        {user.user && (
           <Route path="/" element={<Authenticated />}>
             <Route index element={<Users />} />
             <Route path="persons/:personId" element={<UpdateForm />} />
             <Route path="persons/add" element={<AddForm />} />
           </Route>
         )}
-        {!user.data && (
+        {!user.user && (
           <Route path="/" element={<Unauthenticated />}>
             <Route index element={<RegisterForm />} />
             <Route path="/login" element={<LoginForm />} />
